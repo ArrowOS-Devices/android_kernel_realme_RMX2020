@@ -74,17 +74,6 @@
 
 #include <mt-plat/mtk_pidmap.h>
 
-#ifdef VENDOR_EDIT
-//Ke.Li@ROM.Security, 2019-9-30, Add for execve blocking(root defence)
-#ifdef OPPO_DISALLOW_KEY_INTERFACES
-#if defined(CONFIG_OPPO_EXECVE_BLOCK) || defined(CONFIG_OPPO_EXECVE_REPORT)
-#ifdef CONFIG_OPPO_KEVENT_UPLOAD
-#include <linux/oppo_kevent.h>
-#include <linux/cred.h>
-#endif /* CONFIG_OPPO_KEVENT_UPLOAD */
-#endif /* CONFIG_OPPO_EXECVE_BLOCK or CONFIG_OPPO_EXECVE_REPORT*/
-#endif /* OPPO_DISALLOW_KEY_INTERFACES */
-#endif /* VENDOR_EDIT*/
 int suid_dumpable = 0;
 
 static LIST_HEAD(formats);
@@ -1754,34 +1743,6 @@ bool b_oem_unlocked(void)
 
 static void oppo_report_execveat(const char *path, const char* dcs_event_id)
 {
-#ifdef CONFIG_OPPO_KEVENT_UPLOAD
-	struct kernel_packet_info* dcs_event;
-	char dcs_stack[sizeof(struct kernel_packet_info) + 256];
-	const char* dcs_event_tag = "kernel_event";
-	// const char* dcs_event_id = "execve_report";
-	char* dcs_event_payload = NULL;
-	int uid = current_uid().val;
-	//const struct cred *cred = current_cred();
-
-	dcs_event = (struct kernel_packet_info*)dcs_stack;
-	dcs_event_payload = dcs_stack +
-		sizeof(struct kernel_packet_info);
-
-	dcs_event->type = 3;
-
-	strncpy(dcs_event->log_tag, dcs_event_tag,
-		sizeof(dcs_event->log_tag));
-	strncpy(dcs_event->event_id, dcs_event_id,
-		sizeof(dcs_event->event_id));
-
-	dcs_event->payload_length = snprintf(dcs_event_payload, 256,
-		"%d,path@@%s", uid, path);
-	if (dcs_event->payload_length < 256) {
-		dcs_event->payload_length += 1;
-	}
-	kevent_send_to_user(dcs_event);
-
-#endif /* CONFIG_OPPO_KEVENT_UPLOAD */
 	printk(KERN_ERR "=======>[kevent_send_to_user:execve]:common %s result %s\n", path, dcs_event_id);
 }
 #endif /* (CONFIG_OPPO_EXECVE_BLOCK) || (CONFIG_OPPO_EXECVE_REPORT)*/
