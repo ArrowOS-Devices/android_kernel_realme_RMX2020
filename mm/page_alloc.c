@@ -74,16 +74,10 @@
 #include <asm/tlbflush.h>
 #include <asm/div64.h>
 #include "internal.h"
-#if defined(VENDOR_EDIT) && defined(CONFIG_OPPO_MEM_MONITOR)
-#include <linux/memory_monitor.h>
-#endif /*VENDOR_EDIT*/
 
 #if defined(CONFIG_DMAUSER_PAGES)
 #include <mt-plat/aee.h>
 #endif
-#if defined(VENDOR_EDIT) && defined(CONFIG_OPPO_MEM_MONITOR)
-#include <linux/memory_monitor.h>
-#endif /*VENDOR_EDIT*/
 
 atomic_long_t kswapd_waiters = ATOMIC_LONG_INIT(0);
 
@@ -4077,10 +4071,6 @@ __alloc_pages_slowpath(gfp_t gfp_mask, unsigned int order,
 	bool woke_kswapd = false;
 	bool used_vmpressure = false;
 
-#if defined(VENDOR_EDIT) && defined(CONFIG_OPPO_MEM_MONITOR)
-/* Huacai.Zhou@PSW.BSP.Kernel.MM, 2018-07-07, add alloc wait monitor support*/
-	unsigned long oppo_alloc_start = jiffies;
-#endif /*VENDOR_EDIT*/
 	/*
 	 * We also sanity check to catch abuse of atomic reserves being used by
 	 * callers that are not in atomic context.
@@ -4329,11 +4319,6 @@ nopage:
 	}
 fail:
 got_pg:
-
-#if defined(VENDOR_EDIT) && defined(CONFIG_OPPO_MEM_MONITOR)
-/* Huacai.Zhou@PSW.BSP.Kernel.MM, 2018-07-07, add alloc wait monitor support*/
-	memory_alloc_monitor(gfp_mask, order, jiffies_to_msecs(jiffies - oppo_alloc_start));
-#endif /*VENDOR_EDIT*/
 
 	if (woke_kswapd)
 		atomic_long_dec(&kswapd_waiters);
@@ -4836,11 +4821,6 @@ long si_mem_available(void)
 	 */
 	available += global_node_page_state(NR_INDIRECTLY_RECLAIMABLE_BYTES) >>
 		PAGE_SHIFT;
-
-#ifdef VENDOR_EDIT
-	//Jiheng.Xie@TECH.BSP.Performance,2019-05-06,add for ion cache add to avaible memory statistics
-	available += global_zone_page_state(NR_IONCACHE_PAGES);
-#endif
 
 	if (available < 0)
 		available = 0;
