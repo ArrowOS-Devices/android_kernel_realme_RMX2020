@@ -27,7 +27,3 @@ source "drivers/soc/oppo/oppo_hypnus/Kconfig"
 #//wenbin.liu@PSW.Kernel.MM, 2018/05/23, Add for Healthinfo monitor
 source "drivers/soc/oppo/oppo_healthinfo/Kconfig"
 #endif /* VENDOR_EDIT */
-
-#Kun.Hu@TECH.BSP.Stability.PHOENIX_PROJECT 2019/06/15, Add for PHOENIX_PROJECT
-source "drivers/soc/oppo/oppo_phoenix/Kconfig"
-#endif /* VENDOR_EDIT */
