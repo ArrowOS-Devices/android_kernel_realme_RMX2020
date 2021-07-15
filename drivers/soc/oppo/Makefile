@@ -7,4 +7,3 @@ obj-y += oppo_custom/
 #//wenbin.liu@PSW.Kernel.MM, 2018/05/23, Add for Healthinfo monitor
 obj-y     +=  oppo_healthinfo/
 #endif /* VENDOR_EDIT */
-obj-$(CONFIG_OPPO_HYPNUS)       +=  oppo_hypnus/
