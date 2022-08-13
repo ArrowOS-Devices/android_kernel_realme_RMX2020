@@ -1,6 +1,6 @@
 #
 # Automatically generated file; DO NOT EDIT.
-# Linux/arm64 4.14.283 Kernel Configuration
+# Linux/arm64 4.14.290 Kernel Configuration
 #
 CONFIG_ARM64=y
 CONFIG_64BIT=y
@@ -2357,6 +2357,7 @@ CONFIG_HW_RANDOM_MT67XX=y
 CONFIG_RPMB=y
 # CONFIG_RPMB_INTF_DEV is not set
 # CONFIG_RPMB_SIM is not set
+CONFIG_RANDOM_TRUST_BOOTLOADER=y
 
 #
 # I2C support
