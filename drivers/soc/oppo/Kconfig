@@ -35,8 +35,3 @@ source "drivers/soc/oppo/oppo_shutdown_detect/Kconfig"
 #Kun.Hu@TECH.BSP.Stability.PHOENIX_PROJECT 2019/06/15, Add for PHOENIX_PROJECT
 source "drivers/soc/oppo/oppo_phoenix/Kconfig"
 #endif /* VENDOR_EDIT */
-
-#ifdef VENDOR_EDIT
-#* Bin.Xu@BSP.Kernel.Stability, 2019/12/2, Add for oppo force dump */
-source drivers/soc/oppo/oppo_dump/Kconfig"
-#endif /* VENDOR_EDIT */

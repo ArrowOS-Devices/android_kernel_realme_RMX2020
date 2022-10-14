@@ -14,8 +14,3 @@ obj-$(CONFIG_OPPO_HYPNUS)       +=  oppo_hypnus/
 #Kun.Hu@TECH.BSP.Stability.PHOENIX_PROJECT 2019/06/15, Add for PHOENIX_PROJECT
 obj-$(CONFIG_OPPO_PHOENIX)     +=  oppo_phoenix/
 #endif /* VENDOR_EDIT */
-
-#ifdef VENDOR_EDIT
-#* Bin.Xu@BSP.Kernel.Stability, 2019/12/2, Add for oppo force dump */
-obj-$(CONFIG_OPPO_FORCE_DUMP)     +=  oppo_dump/
-#endif /* VENDOR_EDIT */
