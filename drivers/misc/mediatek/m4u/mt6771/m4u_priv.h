@@ -25,7 +25,7 @@
 #include "../2.4/m4u_pgtable.h"
 #include <aee.h>
 
-#define M4UMSG(string, args...)		pr_notice("[M4U][ERR] "string, ##args)
+#define M4UMSG(string, args...)		pr_debug("[M4U][ERR] "string, ##args)
 #define M4UINFO(string, args...)	pr_debug("[M4U] "string, ##args)
 
 

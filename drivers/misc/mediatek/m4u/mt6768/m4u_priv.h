@@ -27,8 +27,8 @@
 #include "../2.4/m4u_pgtable.h"
 #include <aee.h>
 
-#define M4UMSG(string, args...)	pr_info("[M4U] "string, ##args)
-#define M4UINFO(string, args...) pr_info("[M4U] "string, ##args)
+#define M4UMSG(string, args...)	pr_debug("[M4U] "string, ##args)
+#define M4UINFO(string, args...) pr_debug("[M4U] "string, ##args)
 
 #if (defined(CONFIG_TRUSTONIC_TEE_SUPPORT) || \
 	defined(CONFIG_MICROTRUST_TEE_SUPPORT)) && \
