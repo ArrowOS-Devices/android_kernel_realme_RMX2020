@@ -438,7 +438,7 @@ int oppo_battery_property_is_writeable(struct power_supply *psy,
 		break;
 #endif
         default:
-//                pr_err("writeable prop %d is not supported in batt\n", psp);
+                //pr_err("writeable prop %d is not supported in batt\n", psp);
                 rc = 0;
                 break;
         }
@@ -551,7 +551,7 @@ int oppo_battery_set_property(struct power_supply *psy,
 #endif
 
         default:
-                pr_err("set prop %d is not supported in batt\n", psp);
+                //pr_err("set prop %d is not supported in batt\n", psp);
                 ret = -EINVAL;
                 break;
         }
@@ -781,7 +781,7 @@ int oppo_battery_get_property(struct power_supply *psy,
 			break;
 #endif
         default:
-                pr_err("get prop %d is not supported in batt\n", psp);
+                //pr_err("get prop %d is not supported in batt\n", psp);
                 ret = -EINVAL;
                 break;
         }
