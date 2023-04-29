@@ -152,7 +152,7 @@ bool boot_with_console(void)
 if (get_eng_version() == 0) {
 	int boot_mode = get_boot_mode();
 
-	pr_err("%s: boot_mode = %d\n", __func__, boot_mode);
+	//pr_err("%s: boot_mode = %d\n", __func__, boot_mode);
 	if (boot_mode == FACTORY_BOOT || boot_mode == ATE_FACTORY_BOOT) {
 		return true;
 	} else {
