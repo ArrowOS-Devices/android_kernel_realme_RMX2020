@@ -745,7 +745,7 @@ static int als_recv_data(struct data_unit_t *event, void *reserved)
 //zhihong.lu@BSP.sensor,2018/3/5,add log for debug
     recv_num++;
     if(recv_num >= 50){
-        pr_err("Report lux  %d\n", event->light);
+        pr_debug("Report lux  %d\n", event->light);
         recv_num = 0;
     }
 #endif
