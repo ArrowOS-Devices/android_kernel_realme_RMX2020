@@ -25,16 +25,14 @@ make -j$(nproc --all) O=out \
                       CONFIG_NO_ERROR_ON_MISMATCH=y
 }
 
-function zupload()
+function zipping()
 {
 rm -rf AnyKernel
 git clone --depth=1 https://github.com/sarthakroy2002/AnyKernel3.git AnyKernel
 cp out/arch/arm64/boot/Image.gz-dtb AnyKernel
 cd AnyKernel
 zip -r9 Test-OSS-KERNEL-RMX2020-NEOLIT.zip *
-curl -sL https://git.io/file-transfer | sh
-./transfer wet Test-OSS-KERNEL-RMX2020-NEOLIT.zip
 }
 
 compile
-zupload
+zipping
