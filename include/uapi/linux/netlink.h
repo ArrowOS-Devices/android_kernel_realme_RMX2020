@@ -29,10 +29,6 @@
 #define NETLINK_RDMA		20
 #define NETLINK_CRYPTO		21	/* Crypto layer */
 #define NETLINK_SMC		22	/* SMC monitoring */
-#if defined(VENDOR_EDIT) && defined(CONFIG_OPPO_HANS)
-// Kun.Zhou@ROM.Framework, 2019/09/23, add for hans freeze manager
-#define NETLINK_OPPO_HANS       28      /* Socket for freezing solution*/
-#endif
 #define NETLINK_INET_DIAG	NETLINK_SOCK_DIAG
 
 #ifndef VENDOR_EDIT
