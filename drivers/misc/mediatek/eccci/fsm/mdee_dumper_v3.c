@@ -21,12 +21,6 @@
 #include "ccci_config.h"
 #include "ccci_fsm_sys.h"
 
-//#ifdef VENDOR_EDIT
-//Wentian.Mai@PSW.NW.EM.1448074, 2018/06/26
-//Add for monitor modem crash
-#include <soc/oppo/mmkey_log.h>
-//#endif /*VENDOR_EDIT*/
-
 #ifndef DB_OPT_DEFAULT
 #define DB_OPT_DEFAULT    (0) /* Dummy macro define to avoid build error */
 #endif
@@ -111,7 +105,6 @@ char *aed_str_for_hash = NULL;
     }
     logBuf[BUF_LOG_LENGTH - 1] = '\0';
     CCCI_NORMAL_LOG(md_id, FSM, "modem crash wirte to critical log. hashid = %u, cause = %s.", hashId, logBuf);
-    mm_keylog_write_modemdump(hashId, logBuf, MODEM_MONITOR_ID);
     vfree(logBuf);
   }
 //#endif /*VENDOR_EDIT*/

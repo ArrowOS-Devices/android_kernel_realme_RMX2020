@@ -76,8 +76,6 @@
 #include "mtk_ovl.h"
 
 #ifdef VENDOR_EDIT
-/* Yongpeng.Yi@PSW.MM.Display.LCD.Stability, 2018/09/24,add mm critical log */
-#include <soc/oppo/mmkey_log.h>
 /*
 * liping-m@PSW.MM.Display.LCD.Stability, 2018/07/21,
 * add power seq api for ulps
@@ -305,12 +303,6 @@ int do_esd_check_eint(void)
 	else
 		ret = 1; /* esd check fail */
 
-	#ifdef VENDOR_EDIT
-	/* Yongpeng.Yi@PSW.MM.Display.LCD.Stability, 2018/09/24,add mm critical log */
-	if (ret) {
-		mm_keylog_write("Dispaly Panel do_esd_check_eint fail\n", "ESD\n", TYPE_ESD_EXCEPTION);
-	}
-	#endif /* VENDOR_EDIT */
 	atomic_set(&esd_ext_te_event, 0);
 
 	return ret;
@@ -366,10 +358,6 @@ int do_esd_check_read(void)
 		}
 		/* do dsi reset */
 		dpmgr_path_build_cmdq(phandle, qhandle, CMDQ_DSI_RESET, 0);
-		#ifdef VENDOR_EDIT
-		/* Yongpeng.Yi@PSW.MM.Display.LCD.Stability, 2017/12/13,add mm critical log */
-		mm_keylog_write("Dispaly Panel do_esd_check_read fail\n", "ESD\n", TYPE_ESD_EXCEPTION);
-		#endif /* VENDOR_EDIT */
 		goto destroy_cmdq;
 	}
 
