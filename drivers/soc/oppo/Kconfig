@@ -27,9 +27,6 @@ source "drivers/soc/oppo/oppo_hypnus/Kconfig"
 #//wenbin.liu@PSW.Kernel.MM, 2018/05/23, Add for Healthinfo monitor
 source "drivers/soc/oppo/oppo_healthinfo/Kconfig"
 #endif /* VENDOR_EDIT */
-#//Wen.Luo@BSP
-#Liang.Zhang@TECH.Storage.Stability.OPPO_SHUTDOWN_DETECT, 2019/04/28, Add for shutdown detect
-source "drivers/soc/oppo/oppo_shutdown_detect/Kconfig"
 
 #Kun.Hu@TECH.BSP.Stability.PHOENIX_PROJECT 2019/06/15, Add for PHOENIX_PROJECT
 source "drivers/soc/oppo/oppo_phoenix/Kconfig"
