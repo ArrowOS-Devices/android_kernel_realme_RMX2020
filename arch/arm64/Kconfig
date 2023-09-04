@@ -231,16 +231,6 @@ config NEED_DMA_MAP_STATE
 config NEED_SG_DMA_LENGTH
 	def_bool y
 
-#ifdef VENDOR_EDIT
-#Ke.Li@ROM.Security, 2019/09/30, Add for execve blocking(root defence)
-config OPPO_EXECVE_BLOCK
-	def_bool y
-
-#Ke.Li@ROM.Security, 2019/09/30, Add for execve report(root defence)
-config OPPO_EXECVE_REPORT
-	def_bool y
-#endif/* VENDOR_EDIT */
-
 config SMP
 	def_bool y
 
